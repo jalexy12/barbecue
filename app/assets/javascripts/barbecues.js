@@ -55,9 +55,15 @@
         '  <dd>' + bbqMoment + '</dd>',
         '  <dt>Venue:</dt>',
         '  <dd>' + bbq.venue + '</dd>',
-        '</dl>'
+        '</dl>',
+        '<h2> Users attending </h2'
       ]
+
       $bbqContainer.append(htmlParts.join('\n'))
+      userList.forEach(function(going){
+        $bbqContainer.append(going)
+      })
+      
     })
   }
 })()
