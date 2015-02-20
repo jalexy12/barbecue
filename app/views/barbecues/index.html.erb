@@ -1,8 +1,10 @@
+<%= render('current_user_panel') %>
 <h1>BBQs</h1>
 
 <a href="<%= new_barbecue_path %>" class="btn btn-primary">
   Add a new BBQ
 </a>
+
 
 <ul class="list-unstyled">
   <% @barbecues.each do |bbq| %>
@@ -20,10 +22,24 @@
         <dd><%= bbq.venue %></dd>
       </dl>
 
+  <% if current_user != nil && current_user.barbecues.include?(bbq)  %>
+      <button class="btn btn-primary">Attending this barbecue!!!!!11</button>
+        <br>
+        <b>Users attending:</b>
+        <br>
+      <% bbq.users.each do |attendee| %>
+        <%= attendee.name %>
+        <br>
+        <% end %>
+  <% else %>
       <button class="btn btn-success" data-hook="join-bbq">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
         Join <%= bbq.title %>
       </button>
     </li>
-  <% end %>
+      <% end %>
+    <% end %>
+
+
+ 
 </ul>

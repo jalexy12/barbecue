@@ -41,17 +41,23 @@
     })
 
     request.done(function (bbq) {
+      var bbqMoment = bbq.date
+      var userList = [];
+      bbq.users.forEach (function (user){
+        var name = user.name;
+        userList.push(name);
+      });
+
       var htmlParts = [
         '<h2>' + bbq.title + '</h2>',
         '<dl>',
         '  <dt>Date:</dt>',
-        '  <dd>' + bbq.date + '</dd>',
+        '  <dd>' + bbqMoment + '</dd>',
         '  <dt>Venue:</dt>',
         '  <dd>' + bbq.venue + '</dd>',
         '</dl>'
       ]
       $bbqContainer.append(htmlParts.join('\n'))
     })
-
   }
 })()
